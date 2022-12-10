@@ -1,0 +1,263 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxdntl2eoy17x"]
+
+[ext_resource type="Theme" uid="uid://cgd0bmgcsae7r" path="res://default_theme.tres" id="1_fajo8"]
+[ext_resource type="Script" path="res://scripts/microgame_maker.gd" id="1_t85c7"]
+[ext_resource type="Texture2D" uid="uid://c40jb3g0nqwbc" path="res://sprites/savebutton.png" id="3_m7sjw"]
+[ext_resource type="Texture2D" uid="uid://dvs4cgg8ctnx6" path="res://sprites/loadbutton.png" id="4_rghhu"]
+[ext_resource type="Texture2D" uid="uid://c8b01dkm7m1vo" path="res://sprites/testbutton.png" id="4_twgj5"]
+[ext_resource type="Texture2D" uid="uid://bk86kcmtgnnfg" path="res://sprites/erasebutton.png" id="6_c66ru"]
+[ext_resource type="Texture2D" uid="uid://cbdl2votk38cy" path="res://sprites/renamebutton.png" id="7_687ne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyqow"]
+
+[node name="Window" type="Window"]
+disable_3d = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+title = "Microgame Maker"
+position = Vector2i(-64, -32)
+size = Vector2i(512, 384)
+unresizable = true
+content_scale_mode = 2
+content_scale_aspect = 1
+script = ExtResource("1_t85c7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Note to dev" type="Label" parent="."]
+visible = false
+offset_right = 318.0
+offset_bottom = 78.0
+text = "add code \"extends microgame\\n\"
+to code when playing
+
+note: disable load()"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_right = 512.0
+offset_bottom = 384.0
+theme = ExtResource("1_fajo8")
+drag_to_rearrange_enabled = true
+
+[node name="File" type="Control" parent="TabContainer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TabContainer/File"]
+offset_left = 376.0
+offset_top = 16.0
+offset_right = 496.0
+offset_bottom = 48.0
+text = "Tags:"
+
+[node name="Label2" type="Label" parent="TabContainer/File"]
+offset_left = 16.0
+offset_top = 216.0
+offset_right = 136.0
+offset_bottom = 348.0
+theme_override_constants/line_spacing = 42
+text = "Controls:
+Hint:"
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/File"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 64.0
+placeholder_text = "Microgame Name"
+
+[node name="ButtonSave" type="Button" parent="TabContainer/File"]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 128.0
+text = "Save"
+icon = ExtResource("3_m7sjw")
+
+[node name="ButtonTest" type="Button" parent="TabContainer/File"]
+offset_left = 136.0
+offset_top = 80.0
+offset_right = 328.0
+offset_bottom = 128.0
+text = "Save and Test"
+icon = ExtResource("4_twgj5")
+
+[node name="ButtonLoad" type="Button" parent="TabContainer/File"]
+offset_left = 16.0
+offset_top = 144.0
+offset_right = 120.0
+offset_bottom = 192.0
+text = "Load"
+icon = ExtResource("4_rghhu")
+
+[node name="TagEdit" type="TextEdit" parent="TabContainer/File"]
+offset_left = 376.0
+offset_top = 48.0
+offset_right = 496.0
+offset_bottom = 184.0
+text = "custom"
+placeholder_text = "Example:
+halloween
+boss
+tag1
+tag2"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/File"]
+offset_left = 128.0
+offset_top = 208.0
+offset_right = 248.0
+offset_bottom = 256.0
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Unknown"
+popup/item_0/id = 0
+popup/item_1/text = "Keyboard"
+popup/item_1/id = 1
+popup/item_2/text = "Mouse"
+popup/item_2/id = 2
+popup/item_3/text = "Window"
+popup/item_3/id = 3
+
+[node name="HintEdit" type="LineEdit" parent="TabContainer/File"]
+offset_left = 128.0
+offset_top = 272.0
+offset_right = 368.0
+offset_bottom = 320.0
+text = "Test!"
+placeholder_text = "Microgame Hint"
+
+[node name="Images" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ItemList" type="ItemList" parent="TabContainer/Images"]
+offset_right = 512.0
+offset_bottom = 352.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tyqow")
+allow_rmb_select = true
+max_text_lines = 3
+text_overrun_behavior = 0
+fixed_icon_size = Vector2i(64, 64)
+
+[node name="Sounds" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ItemList" type="ItemList" parent="TabContainer/Sounds"]
+offset_right = 512.0
+offset_bottom = 352.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tyqow")
+allow_rmb_select = true
+max_text_lines = 3
+text_overrun_behavior = 0
+fixed_icon_size = Vector2i(64, 64)
+
+[node name="Code" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CodeEdit" type="CodeEdit" parent="TabContainer/Code"]
+offset_right = 512.0
+offset_bottom = 352.0
+theme = ExtResource("1_fajo8")
+text = "var string:String = \"hello world!\"
+var time:float = 0.0
+
+func _ready():
+	print(string)
+
+func _process(delta):
+	time += delta*Engine.time_scale"
+drag_and_drop_selection_enabled = false
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+minimap_width = 48
+caret_type = 1
+structured_text_bidi_override = 2
+symbol_lookup_on_click = true
+line_folding = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_draw_fold_gutter = true
+code_completion_enabled = true
+indent_size = 10
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="Debug" type="RichTextLabel" parent="TabContainer"]
+visible = false
+focus_mode = 2
+text = "ur ar acting like a sussy baka"
+scroll_following = true
+selection_enabled = true
+
+[node name="UpdateButton" type="Button" parent="TabContainer/Debug"]
+offset_left = 418.0
+offset_top = 296.0
+offset_right = 496.0
+offset_bottom = 340.0
+text = "Update"
+
+[node name="DragLabel" type="Label" parent="."]
+visible = false
+offset_top = 72.0
+offset_right = 512.0
+offset_bottom = 144.0
+theme = ExtResource("1_fajo8")
+theme_override_colors/font_color = Color(0.65098, 0.65098, 0.65098, 1)
+text = "Drag .png and .mp3 files here to
+add textures and sounds!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FileButtons" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 448.0
+offset_top = 328.0
+offset_right = 488.0
+offset_bottom = 368.0
+theme = ExtResource("1_fajo8")
+
+[node name="EraseButton" type="Button" parent="FileButtons"]
+offset_right = 44.0
+offset_bottom = 44.0
+tooltip_text = "Erase"
+icon = ExtResource("6_c66ru")
+
+[node name="RenameButton" type="Button" parent="FileButtons"]
+offset_left = -56.0
+offset_right = -12.0
+offset_bottom = 44.0
+tooltip_text = "Rename"
+icon = ExtResource("7_687ne")
+
+[node name="LineEdit" type="LineEdit" parent="FileButtons"]
+offset_left = -440.0
+offset_right = -68.0
+offset_bottom = 44.0

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crsssopeoektn"]
+
+[ext_resource type="Shader" path="res://materials/shaders/color_limiter.gdshader" id="1_enwov"]
+
+[resource]
+shader = ExtResource("1_enwov")
+shader_parameter/divider = Vector3(12, 12, 12)
+shader_parameter/divider_alpha = 10.0

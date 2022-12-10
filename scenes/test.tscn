@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://khfa1ngfeb7q"]
+
+[ext_resource type="Texture2D" uid="uid://ckv1cx37q6iqp" path="res://sprites/bombtime.png" id="1_esu7b"]
+[ext_resource type="Texture2D" uid="uid://djyrvy84upygr" path="res://sprites/bombmeter.png" id="2_co1d7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.610865
+anchor_mode = 0
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BombSprite" type="Sprite2D" parent="CanvasLayer"]
+z_index = 10
+position = Vector2(8.5, 176)
+texture = ExtResource("1_esu7b")
+
+[node name="Meter" type="Sprite2D" parent="CanvasLayer/BombSprite"]
+position = Vector2(17.5, 7.5)
+scale = Vector2(321321, 1)
+texture = ExtResource("2_co1d7")
+offset = Vector2(0.5, 0)

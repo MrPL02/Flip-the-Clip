@@ -1,0 +1,37 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://c3ixggxuaqm1l"
+path="res://.godot/imported/Nintendo-DS-BIOS.ttf-e21b0947a8156b7be8fa1966b50a2adf.fontdata"
+
+[deps]
+
+source_file="res://fonts/Nintendo-DS-BIOS.ttf"
+dest_files=["res://.godot/imported/Nintendo-DS-BIOS.ttf-e21b0947a8156b7be8fa1966b50a2adf.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+force_autohinter=false
+hinting=0
+subpixel_positioning=0
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}

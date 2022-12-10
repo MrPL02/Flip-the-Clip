@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b27eowx74tqnk"]
+
+[ext_resource type="Texture2D" uid="uid://b1mnddk1m6ra1" path="res://sprites/bombexpl.png" id="1_6sbac"]
+[ext_resource type="Texture2D" uid="uid://ckv1cx37q6iqp" path="res://sprites/bombtime.png" id="1_kkvl3"]
+[ext_resource type="Texture2D" uid="uid://djyrvy84upygr" path="res://sprites/bombmeter.png" id="2_k7obj"]
+[ext_resource type="Texture2D" uid="uid://bx7s5i2f3bycw" path="res://sprites/bombfire.png" id="3_r0vqx"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="BombSprite" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(8.5, 200)
+texture = ExtResource("1_kkvl3")
+
+[node name="Meter" type="Sprite2D" parent="BombSprite"]
+position = Vector2(17.5, 7.5)
+scale = Vector2(900, 1)
+texture = ExtResource("2_k7obj")
+offset = Vector2(0.5, 0)
+
+[node name="Fire" type="Sprite2D" parent="BombSprite"]
+position = Vector2(925.5, 3)
+texture = ExtResource("3_r0vqx")
+vframes = 2
+
+[node name="Kaboom" type="Sprite2D" parent="BombSprite"]
+visible = false
+z_index = 11
+position = Vector2(23.5, -16)
+texture = ExtResource("1_6sbac")

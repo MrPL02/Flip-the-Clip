@@ -1,0 +1,75 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Button",
+"class": &"PMenuButton",
+"language": &"GDScript",
+"path": "res://scripts/menu_button.gd"
+}]
+_global_script_class_icons={
+"PMenuButton": ""
+}
+
+[application]
+
+config/name="FlipWare"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.0")
+run/max_fps=60
+config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://scripts/global/game.gd"
+
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=192
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+window/stretch/mode="viewport"
+
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false
+}
+texture={
+"flags/filter": false
+}
+oggvorbisstr={
+"bpm": 120.0,
+"loop": false
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
+textures/canvas_textures/default_texture_filter=0
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

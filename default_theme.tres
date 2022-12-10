@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cgd0bmgcsae7r"]
+
+[ext_resource type="FontFile" uid="uid://c3ixggxuaqm1l" path="res://fonts/Nintendo-DS-BIOS.ttf" id="1_ocnmy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yknj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0q3p"]
+
+[resource]
+default_font = ExtResource("1_ocnmy")
+default_font_size = 32
+ItemList/styles/focus = SubResource("StyleBoxFlat_0yknj")
+ItemList/styles/selected = SubResource("StyleBoxFlat_i0q3p")
