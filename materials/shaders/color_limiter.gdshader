@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform vec3 divider = vec3(12.0);
-uniform float divider_alpha = 10.0;
+uniform vec3 divider = vec3(1.0);
+uniform float divider_alpha = 3.0;
 
 vec4 limit_color(vec4 input) {
 	input.r = round(input.r*divider.r)/divider.r;

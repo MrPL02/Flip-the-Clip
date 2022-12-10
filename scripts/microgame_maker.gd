@@ -54,7 +54,7 @@ func _notification(what):
 		if is_instance_valid(microgame):
 			microgame.queue_free()
 		test_scene.queue_free()
-		queue_free()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 # Note: sound_data and texture_ara only contains AudioStreamMP3 and Image data.
 func _on_files_dropped(files:PackedStringArray):

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpf7oohquqfgv"]
+
+[ext_resource type="Theme" uid="uid://cgd0bmgcsae7r" path="res://default_theme.tres" id="1_a0mmr"]
+[ext_resource type="Script" path="res://scripts/freeplay.gd" id="1_ajjso"]
+[ext_resource type="Material" uid="uid://crsssopeoektn" path="res://materials/color_limiter.tres" id="1_rk40q"]
+
+[node name="Freeplay" type="Control"]
+material = ExtResource("1_rk40q")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_a0mmr")
+script = ExtResource("1_ajjso")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_right = 128.0
+offset_bottom = 192.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 16
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 152.0
+offset_top = 144.0
+offset_right = 232.0
+offset_bottom = 176.0
+focus_mode = 0
+text = "Play"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 216.0
+offset_top = 8.0
+offset_right = 288.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+text = "Back"
+
+[node name="HintLabel" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 112.0
+offset_right = 256.0
+offset_bottom = 136.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 16
+text = "HINT STRING"
+horizontal_alignment = 1
+vertical_alignment = 1

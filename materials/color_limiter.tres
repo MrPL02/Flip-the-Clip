@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource("1_enwov")
-shader_parameter/divider = Vector3(12, 12, 12)
-shader_parameter/divider_alpha = 10.0
+shader_parameter/divider = Vector3(3, 3, 3)
+shader_parameter/divider_alpha = 3.0

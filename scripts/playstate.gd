@@ -13,7 +13,7 @@ enum States {
 	NONE=-1,	# Placeholder State
 	
 # Non important States #
-	CUSTOM_TEST, # Example of a custom state.
+	CUSTOM_TEST, # Example of a custom state. It doesn't do anything but is here.
 }
 
 const OVERWRTITE_STATES = [ # States that doesn't call on_music_end EVER.
@@ -33,6 +33,7 @@ const OVERWRTITE_STATES = [ # States that doesn't call on_music_end EVER.
 
 var data_micro:Dictionary = {}
 var microgame_scene:SubViewport = null
+var freeplay:bool = false
 var score:int = 0
 var lifes:int = 4
 
@@ -49,6 +50,8 @@ func _ready():
 	anim_play.animation_finished.connect(on_state_end)
 	set_state(States.STARTING)
 	Engine.time_scale = 1.0
+	if freeplay:
+		rounds_per_speed_up = 1
 
 
 func _process(_delta):
@@ -56,7 +59,7 @@ func _process(_delta):
 	info_label.text = "Speed: x%f\nScore: %d\nLifes: %d\nState: %d"%[Engine.time_scale,score,lifes,state]
 	audio_player.pitch_scale = Engine.time_scale
 #	anim_play.playback_speed = Game.speed_scale
-	
+#	if freeplay: times_speed_up = 0
 	match state:
 		States.PLAYING:
 			if microgame_scene.ended:
@@ -109,8 +112,9 @@ func set_state(id:int) -> void:
 #			audio_player.play()
 		
 		States.READY:
-			var micros = get_microgames()
-			data_micro = micros[randi()%micros.size()].duplicate()
+			if not freeplay:
+				var micros = get_microgames()
+				data_micro = micros[randi()%micros.size()].duplicate()
 			tip_label.text = "[center][shake rate=20 level=4]"+data_micro.hint
 			anim_play.play("ready")
 			score += 1
@@ -123,12 +127,15 @@ func set_state(id:int) -> void:
 			anim_play.play("win")
 		
 		States.WARN_SPEED:
-			must_speed_up = false
-			times_speed_up += 1
 			Engine.time_scale += speed_increase
-			anim_play.play("warn_speed")
+			must_speed_up = false
+			if freeplay: set_state(States.READY)
+			else:
+				times_speed_up += 1
+				anim_play.play("warn_speed")
 		
 		States.GAME_OVER:
+			print("THAT'S ALL FOLKS!")
 			anim_play.stop(false)
 			Engine.time_scale = 1.0
 			if is_instance_valid(microgame_scene):

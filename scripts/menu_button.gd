@@ -7,10 +7,10 @@ var image_back:NinePatchRect
 
 @export var color:Color = Color.RED
 
-
 func _ready():
 	self_modulate.a = 0
 	focus_mode = Control.FOCUS_NONE
+	label.use_parent_material = true
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.add_theme_color_override("font_color",Color.WHITE)
@@ -23,9 +23,11 @@ func _ready():
 	image.patch_margin_left = 7
 	image.patch_margin_right = 7
 	image.patch_margin_top = 7
+	image.use_parent_material = true
 	image_back = image.duplicate()
-	image_back.texture = preload("res://sprites/genericbuttonback.png")
 	image_back.position.y = 1
+	image_back.texture = preload("res://sprites/genericbuttonback.png")
+	image_back.use_parent_material = true
 	add_child(image_back)
 	add_child(image)
 	add_child(label)

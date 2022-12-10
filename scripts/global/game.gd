@@ -2,7 +2,7 @@ extends Node
 
 const WINDOW_SIZE_DEFAULT = Vector2i(256,192)
 const MICROGAMES_FOLDERS = ["res://microgames","user://microgames"]
-const VER_TEXT = "ALPHA v0.1"
+const VER_TEXT = "PRE-ALPHA v0.1.1"
 
 @onready var window:Window = get_viewport()
 @onready var base_script = preload("res://scripts/base_microgame.gd")
@@ -57,12 +57,15 @@ func reload_microgames() -> void:
 	for i in MICROGAMES_FOLDERS:
 		microgames_data[i] = []
 		var files:PackedStringArray = DirAccess.get_files_at(i)
+		var index:int = 0
 		for j in files:
 			if not j.ends_with(".mgame"): continue
 			print(i+"/"+j)
 			var file = FileAccess.open_compressed(i+"/"+j, FileAccess.READ,FileAccess.COMPRESSION_ZSTD)
 			if file.get_error() == OK:
 				microgames_data[i].append(file.get_var())
+				microgames_data[i][index]["name"] = j.replace(".mgame","").capitalize()
+			index += 1
 
 func create_audio(file:AudioStream,volume_db:float=0.0,pitch:float=1.0) -> void:
 	var audio
