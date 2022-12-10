@@ -1,4 +1,7 @@
-# flipware
+# FlipWare
 
-NOTE:
-im publishing the frist actual commit when the microgame cycle is actually added.
+A Warioware engine for Godot 4.
+
+**Why? **
+
+Because I noticed a sudden lack of Warioware fangames.
