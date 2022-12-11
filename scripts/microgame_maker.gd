@@ -49,7 +49,6 @@ func _ready():
 
 func _notification(what):
 	if what == 1006:
-		#OS.alert("You need to close the main window to close the modding window.", "Alert!")
 		set_process(false)
 		if is_instance_valid(microgame):
 			microgame.queue_free()
@@ -94,7 +93,6 @@ func get_data() -> Dictionary:
 	}
 	return dict
 
-
 # MICROGAME FILE SYSTEM: (V = Done)
 #V script (String, Multiline) The microgame code writen on GDScript.
 #V textures (Dictonary) List of used textures data.
@@ -103,19 +101,12 @@ func get_data() -> Dictionary:
 #V hint (String) Hint about the microgame goal.
 #V tags (PackedStringArray) Used to separate microgames.
 
-
-# Use MusicManager.set_bpm(float) or set_sound_bpm(String, float) to change the BPM.
-
 # win() -> void - Setting did_win to True with a SFX. Has no effect if lose() has been called frist
 # lose() -> void - Setting did_win to False with a SFX. Has no effect if win() has been called frist.
 
 # VARIABLES MICROGAME
 # time_left (int, defaults to 5) Time left on the microgame on beats. If is -1 the microgame will never end. The ingame timer only uptades each beat.
 # did_win (bool, defaults to False) If the player did actually win. If you don't want the player to wait set time_left to 0.
-
-# EXTRAS
-# Make the default MicrogameControler script.
-# Add a mini wiki.
 
 func save_microgame() -> void:
 	if save_button.disabled: return
@@ -127,14 +118,12 @@ func save_microgame() -> void:
 		var data:Dictionary = get_data()
 		file.store_var(data)
 		print("File %s saved!"%file_name)
-#		print(data)
 
 func load_microgame() -> void:
 	var file_name:String = microgame_name.text+".mgame"
 	var file = FileAccess.open_compressed("user://microgames/"+file_name,FileAccess.READ,FileAccess.COMPRESSION_ZSTD)
 	if FileAccess.file_exists("user://microgames/"+file_name):
 		var data = file.get_var()
-#		print("load ",data)
 		nuke_file()
 		for i in data:
 			match i:
@@ -148,8 +137,6 @@ func load_microgame() -> void:
 				"sounds":
 					sound_data = data[i]
 					for y in sound_data:
-#						var stream = AudioStreamMP3.new()
-#						stream.data = sound_data[y]
 						sound_list.add_item(y)
 					sound_list.sort_items_by_text()
 				"script":
@@ -192,8 +179,6 @@ func _process(_delta):
 			for i in file_buttons.get_children():
 				var disabled:bool = texture_list.get_selected_items().size()==0
 				i.visible = !disabled
-#				if i is LineEdit: i.editable = !disabled
-#				else: i.disabled = disabled
 		"Sounds":
 			drag_label.text = "Drag .mp3 files here\nto add sounds!"
 			drag_label.visible = sound_data.size()==0
@@ -201,8 +186,6 @@ func _process(_delta):
 			for i in file_buttons.get_children():
 				var disabled:bool = sound_list.get_selected_items().size()==0
 				i.visible = !disabled
-#				if i is LineEdit: i.editable = !disabled
-#				else: i.disabled = disabled
 
 const IGNORE_PROP = ["microgame_data","_import_path","Built-in script","Node","scene_file_path","SubViewport","Physics","Audio Listener","Canvas Items","Variable Rate Shading","Process","Render Target","Positional Shadow Atlas","SDF","GUI","Editor Description"]
 func update_debug() -> void:
@@ -212,23 +195,6 @@ func update_debug() -> void:
 		for i in prop:
 			if i.name in IGNORE_PROP: continue
 			debug_label.text += "%s(%s): %s\n"%[i.name, str(i.type), str(microgame.get(i.name))]
-
-#func _input(event):
-#	if event is InputEventKey:
-#		if event.pressed and not event.echo:
-#			match tab_cont.get_tab_title(tab_cont.current_tab):
-#				"Images":
-#					var items:PackedInt32Array = texture_list.get_selected_items()
-#					if event.keycode == KEY_DELETE and items!=PackedInt32Array([]):
-#						for i in items:
-#							texture_data.erase(texture_list.get_item_text(i))
-#							texture_list.remove_item(i)
-#				"Sounds":
-#					var items:PackedInt32Array = sound_list.get_selected_items()
-#					if event.keycode == KEY_DELETE and items!=PackedInt32Array([]):
-#						for i in items:
-#							sound_data.erase(sound_list.get_item_text(i))
-#							sound_list.remove_item(i)
 
 func item_selected(index:int) -> void:
 	match selected_tab:

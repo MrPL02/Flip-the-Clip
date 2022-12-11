@@ -16,9 +16,8 @@ enum States {
 	CUSTOM_TEST, # Example of a custom state. It doesn't do anything but is here.
 }
 
-const OVERWRTITE_STATES = [ # States that doesn't call on_music_end EVER.
+const OVERWRTITE_STATES = [ # States that doesn't call on_state_end EVER.
 	States.PLAYING,
-	States.GAME_OVER,
 	States.NONE,
 ] 
 
@@ -45,9 +44,8 @@ var times_speed_up:int = 0
 
 
 func _ready():
-#	MusicManager.on_end.connect(on_music_end)
-#	audio_player.finished.connect(on_state_end)
-	anim_play.animation_finished.connect(on_state_end)
+	Game.reload_microgames()
+	anim_play.animation_finished.connect(_on_state_end)
 	set_state(States.STARTING)
 	Engine.time_scale = 1.0
 	if freeplay:
@@ -55,8 +53,8 @@ func _ready():
 
 
 func _process(_delta):
-	micro_container.process_mode = Node.PROCESS_MODE_INHERIT if state == States.PLAYING else Node.PROCESS_MODE_DISABLED
 	info_label.text = "Speed: x%f\nScore: %d\nLifes: %d\nState: %d"%[Engine.time_scale,score,lifes,state]
+	micro_container.process_mode = Node.PROCESS_MODE_INHERIT if state == States.PLAYING else Node.PROCESS_MODE_DISABLED
 	audio_player.pitch_scale = Engine.time_scale
 #	anim_play.playback_speed = Game.speed_scale
 #	if freeplay: times_speed_up = 0
@@ -66,7 +64,7 @@ func _process(_delta):
 				set_state(States.MICRO_END)
 
 
-func on_state_end(_a):
+func _on_state_end(_a):
 	if state in OVERWRTITE_STATES: return
 	print("end state ",state)
 	
@@ -76,6 +74,12 @@ func on_state_end(_a):
 		States.MICRO_END:
 			if is_instance_valid(microgame_scene): microgame_scene.queue_free()
 			set_state(States.WIN if did_won else States.LOSE)
+		States.GAME_OVER:
+			if freeplay:
+				get_node("/root/Freeplay").visible = true
+				queue_free()
+			else:
+				get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		_:
 			set_state(States.GAME_OVER if lifes == 0 else States.WARN_SPEED if must_speed_up else States.READY)
 
@@ -101,15 +105,11 @@ func get_microgames(filter:PackedStringArray=PackedStringArray([]), exclude:Pack
 	return mg
 
 func set_state(id:int) -> void:
-#	MusicManager.pitch_scale = 1.7
 #	var prev_state:int = state
 	state = id
 	match id:
 		States.STARTING:
 			anim_play.play("start")
-#			MusicManager.play_music(preload("res://sounds/start_game.ogg"))
-#			audio_player.stream = preload("res://sounds/start_game.ogg")
-#			audio_player.play()
 		
 		States.READY:
 			if not freeplay:
@@ -141,9 +141,7 @@ func set_state(id:int) -> void:
 			if is_instance_valid(microgame_scene):
 				microgame_scene.queue_free()
 				$Things/StaticRect.visible = true
-#			MusicManager.play_music(preload("res://sounds/game_over.ogg"))
-			audio_player.stream = preload("res://sounds/game_over.ogg")
-			audio_player.play()
+			anim_play.play("game_over")
 		
 		States.PLAYING:
 			print("starting microgame")

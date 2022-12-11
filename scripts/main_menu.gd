@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready():
+	Game.reload_microgames()
 	$VersionLabel.text = Game.VER_TEXT
 	$PMenuButton1.pressed.connect(_on_game_start)
 	$PMenuButton2.pressed.connect(_on_free_start)

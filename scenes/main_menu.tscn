@@ -28,7 +28,7 @@ offset_left = 80.0
 offset_top = 24.0
 offset_right = 177.0
 offset_bottom = 64.0
-text = "Play ALPHA"
+text = "Play"
 script = ExtResource("1_vll2t")
 color = Color(1, 0.490196, 0, 1)
 

@@ -8,9 +8,9 @@ var data_name:Array = []
 
 
 func _ready():
+	Game.reload_microgames()
 	$BackButton.pressed.connect(go_back)
 	$StartButton.pressed.connect(_start_pratice)
-	Game.reload_microgames()
 	for i in Game.microgames_data:
 		var index:int = 0
 		for j in Game.microgames_data[i]:
@@ -27,10 +27,6 @@ func _process(_delta):
 	for i in item_list.get_selected_items():
 		var id:Array = data[i].split("|")
 		id[1] = int(id[1])
-		
-#		print(id[1],"/",Game.microgames_data[id[0]].size()-1)
-#		print(Game.microgames_data[id[0]])
-		
 		var n_data:Dictionary = Game.microgames_data[id[0]][id[1]]
 		hint_label.text = n_data.hint
 

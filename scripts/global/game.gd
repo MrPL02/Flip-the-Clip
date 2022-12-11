@@ -2,13 +2,13 @@ extends Node
 
 const WINDOW_SIZE_DEFAULT = Vector2i(256,192)
 const MICROGAMES_FOLDERS = ["res://microgames","user://microgames"]
-const VER_TEXT = "PRE-ALPHA v0.1.1"
+const VER_TEXT = "PRE-ALPHA v0.1.2"
 
 @onready var window:Window = get_viewport()
 @onready var base_script = preload("res://scripts/base_microgame.gd")
 
 
-var window_position:Vector2 = Vector2.ZERO # Position relative to the current screen. This gives up preccision for compatibility.
+var window_position:Vector2 = Vector2.ZERO
 var microgames_data:Dictionary = {}
 var microgames:Array = []
 var audio_created:Array = [[],[]]

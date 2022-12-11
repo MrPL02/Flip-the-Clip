@@ -1,12 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwwlnoc5d3onc"]
+[gd_scene load_steps=24 format=3 uid="uid://dwwlnoc5d3onc"]
 
-[ext_resource type="Texture2D" uid="uid://drijbstu46eg" path="res://sprites/placeholderface.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ds51d62nuqgbt" path="res://sprites/placeholderface.png" id="1"]
 [ext_resource type="Script" path="res://scripts/playstate.gd" id="1_5aebv"]
 [ext_resource type="Material" uid="uid://crsssopeoektn" path="res://materials/color_limiter.tres" id="1_qtnqo"]
 [ext_resource type="AudioStream" uid="uid://c5tv81d6ugmyw" path="res://sounds/round_lose.ogg" id="2_1kbv7"]
 [ext_resource type="Texture2D" uid="uid://c6bvc5xm605so" path="res://sprites/bordertest.png" id="2_5av2n"]
 [ext_resource type="AudioStream" uid="uid://oyhvovobt71k" path="res://sounds/start_round.ogg" id="2_ulkrq"]
 [ext_resource type="FontFile" uid="uid://c3ixggxuaqm1l" path="res://fonts/Nintendo-DS-BIOS.ttf" id="3_np0nt"]
+[ext_resource type="AudioStream" uid="uid://cgm45mie2a846" path="res://sounds/game_over.ogg" id="3_ockef"]
 [ext_resource type="AudioStream" uid="uid://dud80isaufqxh" path="res://sounds/start_game.ogg" id="3_p6047"]
 [ext_resource type="AudioStream" uid="uid://cfaeb4d17bleg" path="res://sounds/round_win.ogg" id="5_1m6ow"]
 [ext_resource type="AudioStream" uid="uid://t321f1mudxm1" path="res://sounds/speedup.ogg" id="6_ge7ex"]
@@ -256,9 +257,28 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_gggvc"]
+resource_name = "game_over"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ockef")
+}],
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d7it0"]
 _data = {
 "end_micro": SubResource("Animation_dcxvg"),
+"game_over": SubResource("Animation_gggvc"),
 "lose": SubResource("Animation_vtrgo"),
 "ready": SubResource("Animation_4782j"),
 "start": SubResource("Animation_jfctm"),
@@ -272,7 +292,7 @@ material = ExtResource("1_qtnqo")
 script = ExtResource("1_5aebv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ulkrq")
+stream = ExtResource("3_ockef")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
