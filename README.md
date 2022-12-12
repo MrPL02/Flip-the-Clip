@@ -10,7 +10,8 @@ Because I noticed a sudden lack of Warioware fangames.
 
 # How To Import Other Microgames
 1. Download the .mgame file.
-2. Open the folder ...\app_userdata\FlipWare\microgames. ([More Info](https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html#doc-data-paths))
+2. Open the folder .../app_userdata/FlipWare/microgames. ([More Info](https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html#doc-data-paths))
+Any microgame you create will be by default on the microgame folder.
 3. Move the file in that folder.
 4. Make the game reload microgames, moving to a different menu should be enough.
 5. Now your very ~~terrible~~ original microgame may be selected on gameplay.
