@@ -36,7 +36,7 @@ func _ready():
 	save_button.pressed.connect(save_microgame)
 	$TabContainer/File/ButtonTest.pressed.connect(test_microgame)
 	$TabContainer/File/ButtonLoad.pressed.connect(load_microgame)
-	$TabContainer/Debug/UpdateButton.pressed.connect(update_debug)
+#	$TabContainer/Debug/UpdateButton.pressed.connect(update_debug)
 	$FileButtons/RenameButton.pressed.connect(request_rename_data)
 	$FileButtons/EraseButton.pressed.connect(request_erase_data)
 	texture_list.item_selected.connect(item_selected)
@@ -153,6 +153,8 @@ func test_microgame() -> void:
 	for i in test_scene.get_children(): i.queue_free()
 	await get_tree().process_frame
 	var scene = Game.create_microgame_scene(get_data())
+	debug_label.clear()
+	scene.print_db.connect(debug_label.append_text)
 	microgame = scene
 	
 	# You need to do this to a subviewport container because otherwise it glitches and only shows up godot logo.
@@ -160,7 +162,7 @@ func test_microgame() -> void:
 	test_scene.add_child(scene)
 	test_scene.set_visible(true)
 	
-	test_scene.get_tree().root.request_attention()
+#	test_scene.get_tree().root.request_attention()
 
 func _process(_delta):
 	save_button.disabled = !microgame_name.text.is_valid_filename()
@@ -186,15 +188,6 @@ func _process(_delta):
 			for i in file_buttons.get_children():
 				var disabled:bool = sound_list.get_selected_items().size()==0
 				i.visible = !disabled
-
-const IGNORE_PROP = ["microgame_data","_import_path","Built-in script","Node","scene_file_path","SubViewport","Physics","Audio Listener","Canvas Items","Variable Rate Shading","Process","Render Target","Positional Shadow Atlas","SDF","GUI","Editor Description"]
-func update_debug() -> void:
-	debug_label.text = ""
-	if is_instance_valid(microgame):
-		var prop = microgame.get_property_list()
-		for i in prop:
-			if i.name in IGNORE_PROP: continue
-			debug_label.text += "%s(%s): %s\n"%[i.name, str(i.type), str(microgame.get(i.name))]
 
 func item_selected(index:int) -> void:
 	match selected_tab:

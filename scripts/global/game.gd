@@ -2,7 +2,7 @@ extends Node
 
 const WINDOW_SIZE_DEFAULT = Vector2i(256,192)
 const MICROGAMES_FOLDERS = ["res://microgames","user://microgames"]
-const VER_TEXT = "PRE-ALPHA v0.1.2"
+const VER_TEXT = "PRE-ALPHA v0.1.3"
 
 @onready var window:Window = get_viewport()
 @onready var base_script = preload("res://scripts/base_microgame.gd")
@@ -24,8 +24,6 @@ func _ready():
 	
 	var dir = DirAccess.open("user://")
 	if not dir.dir_exists("microgames"): dir.make_dir("microgames")
-	
-	reload_microgames()
 
 func _input(event):
 	if event is InputEventKey:
@@ -94,15 +92,21 @@ func create_audio(file:AudioStream,volume_db:float=0.0,pitch:float=1.0) -> void:
 func create_microgame_scene(data:Dictionary) -> Node:
 	var game = SubViewport.new()
 	game.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST 
+	game.canvas_item_default_texture_repeat = true
 	if data.has("script"):
 		var new_script:GDScript = GDScript.new()
 		new_script.source_code = base_script.source_code+data.script
 		print(new_script.source_code)
-		new_script.reload(true)
-		game.set_script(new_script)
-		game.microgame_data = data
-		game.call_deferred("_internal_ready")
-		microgames.append(game)
+		var err = new_script.reload(true)
+		if err == OK:
+			game.set_script(new_script)
+			game.microgame_data = data
+			game.call_deferred("_internal_ready")
+			microgames.append(game)
+		else:
+			var label = Label.new()
+			label.text = "err"+str(err)
+			game.call_deferred("add_child",label)
 	game.size = WINDOW_SIZE_DEFAULT
 	return game
 

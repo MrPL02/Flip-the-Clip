@@ -53,6 +53,7 @@ theme = ExtResource("1_fajo8")
 drag_to_rearrange_enabled = true
 
 [node name="File" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/File"]
@@ -205,14 +206,12 @@ line_folding = true
 gutters_draw_line_numbers = true
 gutters_zero_pad_line_numbers = true
 gutters_draw_fold_gutter = true
-code_completion_enabled = true
 indent_size = 10
 indent_automatic = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 
 [node name="Debug" type="RichTextLabel" parent="TabContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 2
 text = "ur ar acting like a sussy baka"
@@ -220,6 +219,7 @@ scroll_following = true
 selection_enabled = true
 
 [node name="UpdateButton" type="Button" parent="TabContainer/Debug"]
+visible = false
 layout_mode = 0
 offset_left = 418.0
 offset_top = 296.0
