@@ -76,6 +76,7 @@ func _internal_process(delta:float):
 			if beat_time_limit-internal_beat < 4 and check_time_limit and not ended:
 				if beat_time_limit-internal_beat == 0: pass
 				else: Game.create_audio(preload("res://sounds/bomb_tick.ogg"))
+		if ended: debug_print("TIME END")
 
 ###################
 # MAKER FUNCTIONS #
@@ -126,9 +127,9 @@ func get_sound(id:String, s_bpm:float=120.0) -> AudioStreamMP3:
 ## Prints on the debug tab.
 func debug_print(msg=null) -> void:
 	if not msg is String: msg = str(msg)
-	msg = "[%.3fs] %s\n"%[internal_time, msg]
-	emit_signal("print_db",msg)
-	printraw(msg)
+	msg = "[%.3fs] %s"%[internal_time, msg]
+	emit_signal("print_db",msg+"\n")
+	print(msg)
 
 #################
 # CUSTOM SCRIPT #

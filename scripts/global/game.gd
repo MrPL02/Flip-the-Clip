@@ -2,7 +2,7 @@ extends Node
 
 const WINDOW_SIZE_DEFAULT = Vector2i(256,192)
 const MICROGAMES_FOLDERS = ["res://microgames","user://microgames"]
-const VER_TEXT = "PRE-ALPHA v0.1.3"
+const VER_TEXT = "PRE-ALPHA v0.1.4"
 
 @onready var window:Window = get_viewport()
 @onready var base_script = preload("res://scripts/base_microgame.gd")

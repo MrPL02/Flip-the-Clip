@@ -53,7 +53,6 @@ theme = ExtResource("1_fajo8")
 drag_to_rearrange_enabled = true
 
 [node name="File" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/File"]
@@ -190,7 +189,7 @@ text = "var string:String = \"hello world!\"
 var time:float = 0.0
 
 func _ready():
-	print(string)
+	debug_print(string)
 
 func _process(delta):
 	time += delta*Engine.time_scale"
@@ -212,6 +211,7 @@ auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 
 [node name="Debug" type="RichTextLabel" parent="TabContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 2
 text = "ur ar acting like a sussy baka"
