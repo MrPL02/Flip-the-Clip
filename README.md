@@ -1,16 +1,18 @@
-# FlipWare
+# Flip the Clip
+<sub>Previously known as Flipware</sub>
+
 
 A Warioware engine for Godot 4.
 
 **Why?**
 
-Because I noticed a sudden lack of Warioware fangames.
+Because I noticed a sudden lack of Warioware fangames and because I felt like it.
 
 
 
 # How To Import Other Microgames
 1. Download the .mgame file.
-2. Open the folder .../app_userdata/FlipWare/microgames. ([More Info](https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html#doc-data-paths))
+2. Open the folder .../app_userdata/FlipWare/microgames. ([More Info about data paths](https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html#doc-data-paths))
 3. Move the file in that folder.
 
 Any microgame you create and save will be by default on the microgame folder.
