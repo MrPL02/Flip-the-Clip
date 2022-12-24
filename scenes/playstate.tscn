@@ -67,6 +67,24 @@ tracks/3/keys = {
 "values": [Vector2(0, 0), Vector2(0, -30)]
 }
 
+[sub_resource type="Animation" id="Animation_gggvc"]
+resource_name = "game_over"
+length = 4.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ockef")
+}],
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_vtrgo"]
 resource_name = "lose"
 length = 2.0
@@ -253,24 +271,6 @@ tracks/0/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("5_1m6ow")
-}],
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_gggvc"]
-resource_name = "game_over"
-length = 4.0
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_ockef")
 }],
 "times": PackedFloat32Array(0)
 }

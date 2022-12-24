@@ -42,7 +42,7 @@ func _ready():
 	texture_list.item_selected.connect(item_selected)
 	sound_list.item_selected.connect(item_selected)
 	files_dropped.connect(_on_files_dropped)
-	position += Game.window.position
+	position = DisplayServer.screen_get_size()/2
 	
 	test_scene.size = Game.WINDOW_SIZE_DEFAULT
 	get_parent().add_child.call_deferred(test_scene)

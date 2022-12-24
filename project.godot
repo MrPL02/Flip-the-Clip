@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FlipWare"
+config/name="Flip the Clip"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.0")
 run/max_fps=60

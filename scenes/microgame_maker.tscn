@@ -15,7 +15,6 @@ disable_3d = true
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 title = "Microgame Maker"
-position = Vector2i(-64, -32)
 size = Vector2i(512, 384)
 unresizable = true
 content_scale_mode = 2
@@ -127,7 +126,7 @@ offset_left = 128.0
 offset_top = 208.0
 offset_right = 248.0
 offset_bottom = 256.0
-item_count = 4
+item_count = 3
 selected = 0
 fit_to_longest_item = false
 popup/item_0/text = "Unknown"
@@ -136,8 +135,6 @@ popup/item_1/text = "Keyboard"
 popup/item_1/id = 1
 popup/item_2/text = "Mouse"
 popup/item_2/id = 2
-popup/item_3/text = "Window"
-popup/item_3/id = 3
 
 [node name="HintEdit" type="LineEdit" parent="TabContainer/File"]
 layout_mode = 0

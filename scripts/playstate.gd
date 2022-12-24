@@ -27,7 +27,7 @@ const OVERWRTITE_STATES = [ # States that doesn't call on_state_end EVER.
 @onready var micro_container:SubViewportContainer = $Things/SubViewportContainer
 @onready var tip_label:RichTextLabel = $TipTextLabel
 
-@export_range(1, 999) var rounds_per_speed_up:int = 6
+@export_range(1, 999) var rounds_per_speed_up:int = 3
 @export var speed_increase:float = 0.05
 
 var data_micro:Dictionary = {}
@@ -53,7 +53,7 @@ func _ready():
 
 
 func _process(_delta):
-	info_label.text = "Speed: x%f\nScore: %d\nLifes: %d\nState: %d"%[Engine.time_scale,score,lifes,state]
+	info_label.text = "Speed: x%.2f\nScore: %d\nLifes: %d\nState: %d"%[Engine.time_scale,score,lifes,state]
 	micro_container.process_mode = Node.PROCESS_MODE_INHERIT if state == States.PLAYING else Node.PROCESS_MODE_DISABLED
 	audio_player.pitch_scale = Engine.time_scale
 #	anim_play.playback_speed = Game.speed_scale
