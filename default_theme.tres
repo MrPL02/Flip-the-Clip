@@ -1,13 +1,18 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cgd0bmgcsae7r"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cgd0bmgcsae7r"]
 
 [ext_resource type="FontFile" uid="uid://c3ixggxuaqm1l" path="res://fonts/Nintendo-DS-BIOS.ttf" id="1_ocnmy"]
+[ext_resource type="Texture2D" uid="uid://cg3ic1dppwtvt" path="res://sprites/grid.png" id="1_yarvg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yknj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0q3p"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxj4r"]
+texture = ExtResource("1_yarvg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 2, 2)
 
 [resource]
 default_font = ExtResource("1_ocnmy")
 default_font_size = 32
 ItemList/styles/focus = SubResource("StyleBoxFlat_0yknj")
-ItemList/styles/selected = SubResource("StyleBoxFlat_i0q3p")
+ItemList/styles/selected = SubResource("StyleBoxTexture_sxj4r")

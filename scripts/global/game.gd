@@ -2,7 +2,7 @@ extends Node
 
 const WINDOW_SIZE_DEFAULT = Vector2i(256,192)
 const MICROGAMES_FOLDERS = ["res://microgames","user://microgames"]
-const VER_TEXT = "PRE-ALPHA v0.1.5"
+const VER_TEXT = "PRE-ALPHA v0.1.6"
 
 @onready var window:Window = get_viewport()
 @onready var base_script = preload("res://scripts/base_microgame.gd")
@@ -18,12 +18,14 @@ func _ready():
 	print("Add this on a splash screen:\n")
 	print("THIS GAME ALLOWS MODDING!\nTHE FINAL USER IS THE SOLE RESPONSIBLE OF ANY EFFECTS MODS MAY CAUSE.\n\nAlso this game is open sorce!\nGAMEJOLT IS THE ONLY PLATFORM WITH OFFICIAL RELASES AND GITHUB THE ONLY CONTANING THE SORCE CODE.\nUSING ANY OTHER SIZE MAY RISK GETTING MALWARE OR WORSE; A CAR EXTENDED WARRANTY.\n\ntl;dr Don't download shit kiddos.\nABOUT COPYRIGHTED CONTENT\nFLIPWARE EXPECTS THAT THE MODDERS (The mods creators) TO HOLD THE COPYRIGHT OF ANY ASSET.\nTHE MODDER IS LIABLE OF ANY DAMAGE IT MAY CAUSE BY USING STOLEN COPYRIGHT CONTENT.\nBY CREATING INGAME MODIFICATIONS YOU AGREE THAT YOUR MODS DOESN'T BREAK ANY COPYRIGHT OR CYBERNETIC LAW.\n")
 	
+	window.min_size = Vector2i(256,192)
 	if DisplayServer.screen_get_size() > WINDOW_SIZE_DEFAULT*3:
 		window.size = WINDOW_SIZE_DEFAULT*2
 		window.position -= WINDOW_SIZE_DEFAULT/2
 	
 	var dir = DirAccess.open("user://")
 	if not dir.dir_exists("microgames"): dir.make_dir("microgames")
+	
 
 func _input(event):
 	if event is InputEventKey:
@@ -93,6 +95,7 @@ func create_microgame_scene(data:Dictionary) -> Node:
 	var game = SubViewport.new()
 	game.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST 
 	game.canvas_item_default_texture_repeat = true
+	game.transparent_bg = true
 	if data.has("script"):
 		var new_script:GDScript = GDScript.new()
 		new_script.source_code = base_script.source_code+data.script

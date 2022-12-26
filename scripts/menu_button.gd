@@ -16,7 +16,8 @@ func _ready():
 	label.add_theme_color_override("font_color",Color.WHITE)
 	label.add_theme_color_override("font_outline_color",Color.BLACK)
 	label.add_theme_font_override("font",preload("res://fonts/Nintendo-DS-BIOS.ttf"))
-	label.add_theme_constant_override("outline_size",3)
+	if has_theme_constant_override("outline_size"): label.add_theme_constant_override("outline_size",get_theme_constant("outline_size"))
+	else: label.add_theme_constant_override("outline_size",3)
 	image.texture = preload("res://sprites/genericbutton.png")
 	image.region_rect.size = Vector2(24,24)
 	image.patch_margin_bottom = 7

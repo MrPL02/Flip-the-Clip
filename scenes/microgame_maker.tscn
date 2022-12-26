@@ -52,10 +52,13 @@ theme = ExtResource("1_fajo8")
 drag_to_rearrange_enabled = true
 
 [node name="File" type="Control" parent="TabContainer"]
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
 
 [node name="Label" type="Label" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 376.0
 offset_top = 16.0
 offset_right = 496.0
@@ -63,7 +66,6 @@ offset_bottom = 48.0
 text = "Tags:"
 
 [node name="Label2" type="Label" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 216.0
 offset_right = 136.0
@@ -73,7 +75,6 @@ text = "Controls:
 Hint:"
 
 [node name="LineEdit" type="LineEdit" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 256.0
@@ -81,7 +82,6 @@ offset_bottom = 64.0
 placeholder_text = "Microgame Name"
 
 [node name="ButtonSave" type="Button" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 80.0
 offset_right = 120.0
@@ -90,7 +90,6 @@ text = "Save"
 icon = ExtResource("3_m7sjw")
 
 [node name="ButtonTest" type="Button" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 136.0
 offset_top = 80.0
 offset_right = 328.0
@@ -99,7 +98,6 @@ text = "Save and Test"
 icon = ExtResource("4_twgj5")
 
 [node name="ButtonLoad" type="Button" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 144.0
 offset_right = 120.0
@@ -108,7 +106,6 @@ text = "Load"
 icon = ExtResource("4_rghhu")
 
 [node name="TagEdit" type="TextEdit" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 376.0
 offset_top = 48.0
 offset_right = 496.0
@@ -121,7 +118,6 @@ tag1
 tag2"
 
 [node name="OptionButton" type="OptionButton" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 128.0
 offset_top = 208.0
 offset_right = 248.0
@@ -137,7 +133,6 @@ popup/item_2/text = "Mouse"
 popup/item_2/id = 2
 
 [node name="HintEdit" type="LineEdit" parent="TabContainer/File"]
-layout_mode = 0
 offset_left = 128.0
 offset_top = 272.0
 offset_right = 368.0
@@ -147,10 +142,10 @@ placeholder_text = "Microgame Hint"
 
 [node name="Images" type="Control" parent="TabContainer"]
 visible = false
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ItemList" type="ItemList" parent="TabContainer/Images"]
-layout_mode = 0
 offset_right = 512.0
 offset_bottom = 352.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tyqow")
@@ -161,10 +156,10 @@ fixed_icon_size = Vector2i(64, 64)
 
 [node name="Sounds" type="Control" parent="TabContainer"]
 visible = false
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ItemList" type="ItemList" parent="TabContainer/Sounds"]
-layout_mode = 0
 offset_right = 512.0
 offset_bottom = 352.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tyqow")
@@ -175,10 +170,10 @@ fixed_icon_size = Vector2i(64, 64)
 
 [node name="Code" type="Control" parent="TabContainer"]
 visible = false
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 
 [node name="CodeEdit" type="CodeEdit" parent="TabContainer/Code"]
-layout_mode = 0
 offset_right = 512.0
 offset_bottom = 352.0
 theme = ExtResource("1_fajo8")
@@ -209,7 +204,6 @@ auto_brace_completion_highlight_matching = true
 
 [node name="Debug" type="RichTextLabel" parent="TabContainer"]
 visible = false
-layout_mode = 2
 focus_mode = 2
 text = "ur ar acting like a sussy baka"
 scroll_following = true
@@ -217,7 +211,6 @@ selection_enabled = true
 
 [node name="UpdateButton" type="Button" parent="TabContainer/Debug"]
 visible = false
-layout_mode = 0
 offset_left = 418.0
 offset_top = 296.0
 offset_right = 496.0
@@ -247,14 +240,12 @@ offset_bottom = 368.0
 theme = ExtResource("1_fajo8")
 
 [node name="EraseButton" type="Button" parent="FileButtons"]
-layout_mode = 0
 offset_right = 44.0
 offset_bottom = 44.0
 tooltip_text = "Erase"
 icon = ExtResource("6_c66ru")
 
 [node name="RenameButton" type="Button" parent="FileButtons"]
-layout_mode = 0
 offset_left = -56.0
 offset_right = -12.0
 offset_bottom = 44.0
@@ -262,7 +253,6 @@ tooltip_text = "Rename"
 icon = ExtResource("7_687ne")
 
 [node name="LineEdit" type="LineEdit" parent="FileButtons"]
-layout_mode = 0
 offset_left = -440.0
 offset_right = -68.0
 offset_bottom = 44.0
