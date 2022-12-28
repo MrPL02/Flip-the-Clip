@@ -18,11 +18,11 @@ Also as an excuse to play with Godot 4.
 Any microgame you create and save will be by default on the microgame folder.
 
 4. Make the game reload microgames, moving to a different menu should be enough.
-5. Now your very ~~terrible~~ original microgame may be selected on gameplay.
+5. Now your very original microgame may be selected on gameplay.
 
 
 # How To Download Le Source Code
-1. Download Godot version 4.0 BETA 7 or one more recent. (You may need to visit [Godot news tab](https://godotengine.org/news/default/1).)
+1. Download Godot version 4.0 BETA 9 or one more recent. (You may need to visit [Godot news tab](https://godotengine.org/news/default/1).)
 2. Download the source code on a .zip file. (Press [ Code > Download ZIP ] on the code tab.)
 3. **Import** the proyect on Godot using the .zip file.
 4. Profit.
