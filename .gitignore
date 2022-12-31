@@ -2,3 +2,5 @@ FlipWare.zip
 .godot
 .import
 *.import
+*.md
+*.cfg

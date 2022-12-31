@@ -25,6 +25,7 @@ const OVERWRTITE_STATES = [ # States that doesn't call on_state_end EVER.
 @onready var anim_play:AnimationPlayer = $AnimationPlayer
 @onready var audio_player:AudioStreamPlayer = $AudioStreamPlayer
 @onready var micro_container:SubViewportContainer = $Things/SubViewportContainer
+@onready var face:AnimatedSprite2D = $Things/Background/AnimatedSprite2D
 @onready var tip_label:RichTextLabel = $TipTextLabel
 
 @export_range(1, 999) var rounds_per_speed_up:int = 3
@@ -112,6 +113,7 @@ func set_state(id:int) -> void:
 			anim_play.play("start")
 		
 		States.READY:
+			face.play("default")
 			if not freeplay:
 				var micros = get_microgames()
 				data_micro = micros[randi()%micros.size()].duplicate()
@@ -122,11 +124,14 @@ func set_state(id:int) -> void:
 		States.LOSE:
 			lifes -= 1
 			anim_play.play("lose")
+			face.play("lose")
 		
 		States.WIN:
 			anim_play.play("win")
+			face.play("win")
 		
 		States.WARN_SPEED:
+			face.play("win")
 			Engine.time_scale += speed_increase
 			must_speed_up = false
 			if freeplay: set_state(States.READY)

@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=3 uid="uid://dwwlnoc5d3onc"]
+[gd_scene load_steps=34 format=3 uid="uid://dwwlnoc5d3onc"]
 
-[ext_resource type="Texture2D" uid="uid://ds51d62nuqgbt" path="res://sprites/placeholderface.png" id="1"]
 [ext_resource type="Script" path="res://scripts/playstate.gd" id="1_5aebv"]
 [ext_resource type="Material" uid="uid://crsssopeoektn" path="res://materials/color_limiter.tres" id="1_qtnqo"]
 [ext_resource type="AudioStream" uid="uid://c5tv81d6ugmyw" path="res://sounds/round_lose.ogg" id="2_1kbv7"]
@@ -14,6 +13,7 @@
 [ext_resource type="Material" uid="uid://c7k0gs4advq1t" path="res://materials/static.tres" id="7_0wrp3"]
 [ext_resource type="Script" path="res://scripts/menu_button.gd" id="11_2kfh8"]
 [ext_resource type="Script" path="res://scripts/pause_canvas.gd" id="11_cm8p5"]
+[ext_resource type="Texture2D" uid="uid://dqw8rnoiql1g7" path="res://sprites/face.png" id="11_m2xbe"]
 
 [sub_resource type="Animation" id="Animation_dcxvg"]
 resource_name = "end_micro"
@@ -287,6 +287,60 @@ _data = {
 "win": SubResource("Animation_4jocy")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7u5b"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(0, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn7av"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(256, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceq3w"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(512, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2032"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(1536, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wokmr"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(1792, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1c35"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(2048, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqyve"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(768, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv2vw"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(1024, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf03q"]
+atlas = ExtResource("11_m2xbe")
+region = Rect2(1280, 0, 256, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m75n8"]
+animations = [{
+"frames": [SubResource("AtlasTexture_c7u5b"), SubResource("AtlasTexture_hn7av"), SubResource("AtlasTexture_ceq3w"), SubResource("AtlasTexture_hn7av")],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [SubResource("AtlasTexture_x2032"), SubResource("AtlasTexture_wokmr"), SubResource("AtlasTexture_c1c35"), SubResource("AtlasTexture_wokmr")],
+"loop": true,
+"name": &"lose",
+"speed": 14.0
+}, {
+"frames": [SubResource("AtlasTexture_jqyve"), SubResource("AtlasTexture_bv2vw"), SubResource("AtlasTexture_wf03q"), SubResource("AtlasTexture_wf03q"), SubResource("AtlasTexture_bv2vw")],
+"loop": true,
+"name": &"win",
+"speed": 14.0
+}]
+
 [node name="PlayState" type="Node2D"]
 material = ExtResource("1_qtnqo")
 script = ExtResource("1_5aebv")
@@ -299,14 +353,17 @@ libraries = {
 "": SubResource("AnimationLibrary_d7it0")
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_top = -192.0
-offset_right = 256.0
-offset_bottom = 192.0
-color = Color(0, 0, 0, 1)
-
 [node name="Things" type="Node2D" parent="."]
 use_parent_material = true
+
+[node name="ColorRect" type="ColorRect" parent="Things"]
+offset_top = -192.0
+offset_right = 256.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Things"]
+offset_right = 256.0
+offset_bottom = 192.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Things"]
 use_parent_material = true
@@ -326,9 +383,10 @@ position = Vector2(128, -96)
 texture = ExtResource("2_5av2n")
 offset = Vector2(0, 96)
 
-[node name="Sprite2D" type="Sprite2D" parent="Things/Background"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Things/Background"]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 192)
-texture = ExtResource("1")
+frames = SubResource("SpriteFrames_m75n8")
 
 [node name="InfoLabel" type="Label" parent="."]
 use_parent_material = true
@@ -406,3 +464,7 @@ text = "[center]MY OVARIES HURT"
 fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
