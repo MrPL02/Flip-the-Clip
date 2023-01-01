@@ -10,14 +10,19 @@ Because I noticed a sudden lack of Warioware fangames and because I felt like it
 Also as an excuse to play with Godot 4.
 
 
+# Locations of User data
+Any microgame you create and save will be with the User data.
+
+- **Windows**: %APPDATA%\Roaming\Godot\app_userdata\Flip the Clip  
+- **MacOS**: ~/Library/Application Support/Godot/app_userdata/Flip the Clip  
+- **Linux**: ~/.local/share/godot/app_userdata/Flip the Clip  
+
+
 # How To Import Other Microgames
 1. Download the .mgame file.
-2. Open the folder .../app_userdata/FlipWare/microgames. ([More Info about data paths](https://docs.godotengine.org/en/latest/tutorials/io/data_paths.html#doc-data-paths))
+2. Open your user folder.
 3. Move the file in that folder.
-
-Any microgame you create and save will be by default on the microgame folder.
-
-4. Make the game reload microgames, moving to a different menu should be enough.
+4. Make the game reload microgames, the game reloads microgames eachtime you move to a different menu.
 5. Now your very original microgame may be selected on gameplay.
 
 
