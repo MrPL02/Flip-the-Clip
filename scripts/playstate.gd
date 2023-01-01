@@ -111,6 +111,7 @@ func set_state(id:int) -> void:
 	match id:
 		States.STARTING:
 			anim_play.play("start")
+			face.play("intro")
 		
 		States.READY:
 			face.play("default")

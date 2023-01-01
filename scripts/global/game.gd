@@ -7,7 +7,6 @@ const VER_TEXT = "PRE-ALPHA v0.1.7"
 @onready var window:Window = get_viewport()
 @onready var base_script = preload("res://scripts/base_microgame.gd")
 
-
 var window_position:Vector2 = Vector2.ZERO
 var microgames_data:Dictionary = {}
 var microgames:Array = []
@@ -15,9 +14,10 @@ var audio_created:Array = [[],[]]
 var int_time:int = 0
 
 func _ready():
-	print("Add this on a splash screen:\n")
-	print("THIS GAME ALLOWS MODDING!\nTHE FINAL USER IS THE SOLE RESPONSIBLE OF ANY EFFECTS MODS MAY CAUSE.\n\nAlso this game is open sorce!\nGAMEJOLT IS THE ONLY PLATFORM WITH OFFICIAL RELASES AND GITHUB THE ONLY CONTANING THE SORCE CODE.\nUSING ANY OTHER SIZE MAY RISK GETTING MALWARE OR WORSE; A CAR EXTENDED WARRANTY.\n\ntl;dr Don't download shit kiddos.\nABOUT COPYRIGHTED CONTENT\nFLIPWARE EXPECTS THAT THE MODDERS (The mods creators) TO HOLD THE COPYRIGHT OF ANY ASSET.\nTHE MODDER IS LIABLE OF ANY DAMAGE IT MAY CAUSE BY USING STOLEN COPYRIGHT CONTENT.\nBY CREATING INGAME MODIFICATIONS YOU AGREE THAT YOUR MODS DOESN'T BREAK ANY COPYRIGHT OR CYBERNETIC LAW.\n")
+#	print("Add this on a splash screen:\n")
+	print("THIS GAME ALLOWS MODDING!\nTHE FINAL USER IS THE SOLE RESPONSIBLE OF ANY EFFECTS MODS MAY CAUSE.\n\nAlso this game is open sorce!\nGAMEJOLT IS THE ONLY PLATFORM WITH OFFICIAL RELASES AND GITHUB THE ONLY CONTANING THE SORCE CODE.\nUSING ANY OTHER SIZE MAY RISK GETTING MALWARE OR WORSE; A CAR EXTENDED WARRANTY.\n\ntl;dr Don't download shit kiddos.\nABOUT COPYRIGHTED CONTENT.\nTHE MODDER IS LIABLE OF ANY DAMAGE IT MAY CAUSE BY USING STOLEN COPYRIGHT CONTENT.\nBY CREATING INGAME MODIFICATIONS YOU AGREE THAT YOUR MODS DOESN'T BREAK ANY LAW.\n")
 	
+	RenderingServer.set_default_clear_color(Color.BLACK)
 	window.min_size = Vector2i(256,192)
 	if DisplayServer.screen_get_size() > WINDOW_SIZE_DEFAULT*3:
 		window.size = WINDOW_SIZE_DEFAULT*2

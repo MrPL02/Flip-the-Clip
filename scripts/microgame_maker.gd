@@ -33,6 +33,7 @@ var selected_tab:String = ""
 
 
 func _ready():
+	RenderingServer.set_default_clear_color(Color.GRAY)
 	save_button.pressed.connect(save_microgame)
 	$TabContainer/File/ButtonTest.pressed.connect(test_microgame)
 	$TabContainer/File/ButtonLoad.pressed.connect(load_microgame)
@@ -50,6 +51,7 @@ func _ready():
 func _notification(what):
 	if what == 1006:
 		set_process(false)
+		RenderingServer.set_default_clear_color(Color.BLACK)
 		if is_instance_valid(microgame):
 			microgame.queue_free()
 		test_scene.queue_free()

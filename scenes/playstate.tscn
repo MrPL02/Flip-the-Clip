@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dwwlnoc5d3onc"]
+[gd_scene load_steps=41 format=3 uid="uid://dwwlnoc5d3onc"]
 
 [ext_resource type="Script" path="res://scripts/playstate.gd" id="1_5aebv"]
 [ext_resource type="Material" uid="uid://crsssopeoektn" path="res://materials/color_limiter.tres" id="1_qtnqo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/menu_button.gd" id="11_2kfh8"]
 [ext_resource type="Script" path="res://scripts/pause_canvas.gd" id="11_cm8p5"]
 [ext_resource type="Texture2D" uid="uid://dqw8rnoiql1g7" path="res://sprites/face.png" id="11_m2xbe"]
+[ext_resource type="Texture2D" uid="uid://c8uk00htyhe3e" path="res://sprites/screenon.png" id="12_2cgoo"]
 
 [sub_resource type="Animation" id="Animation_dcxvg"]
 resource_name = "end_micro"
@@ -299,6 +300,30 @@ region = Rect2(256, 0, 256, 192)
 atlas = ExtResource("11_m2xbe")
 region = Rect2(512, 0, 256, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5klv1"]
+atlas = ExtResource("12_2cgoo")
+region = Rect2(0, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7kur"]
+atlas = ExtResource("12_2cgoo")
+region = Rect2(256, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsmfp"]
+atlas = ExtResource("12_2cgoo")
+region = Rect2(512, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn5fr"]
+atlas = ExtResource("12_2cgoo")
+region = Rect2(768, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo2p5"]
+atlas = ExtResource("12_2cgoo")
+region = Rect2(1024, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykx4v"]
+atlas = ExtResource("12_2cgoo")
+region = Rect2(1280, 0, 256, 192)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2032"]
 atlas = ExtResource("11_m2xbe")
 region = Rect2(1536, 0, 256, 192)
@@ -328,6 +353,11 @@ animations = [{
 "frames": [SubResource("AtlasTexture_c7u5b"), SubResource("AtlasTexture_hn7av"), SubResource("AtlasTexture_ceq3w"), SubResource("AtlasTexture_hn7av")],
 "loop": true,
 "name": &"default",
+"speed": 12.0
+}, {
+"frames": [SubResource("AtlasTexture_5klv1"), SubResource("AtlasTexture_f7kur"), SubResource("AtlasTexture_tsmfp"), SubResource("AtlasTexture_vn5fr"), SubResource("AtlasTexture_oo2p5"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_ykx4v"), SubResource("AtlasTexture_c7u5b")],
+"loop": false,
+"name": &"intro",
 "speed": 12.0
 }, {
 "frames": [SubResource("AtlasTexture_x2032"), SubResource("AtlasTexture_wokmr"), SubResource("AtlasTexture_c1c35"), SubResource("AtlasTexture_wokmr")],
@@ -385,6 +415,7 @@ offset = Vector2(0, 96)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Things/Background"]
 modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
 position = Vector2(0, 192)
 frames = SubResource("SpriteFrames_m75n8")
 
