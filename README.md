@@ -2,7 +2,7 @@
 <sub>Previously known as Flipware</sub>
 
 
-A Warioware engine for Godot 4.
+A Warioware fangame template for Godot 4.
 
 **Why?**
 
