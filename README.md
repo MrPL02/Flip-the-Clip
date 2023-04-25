@@ -1,3 +1,11 @@
+# WARNING!
+The code sucks and I moved to other proyects, don't expect much.
+
+
+
+
+
+
 # Flip the Clip
 <sub>Previously known as Flipware</sub>
 
